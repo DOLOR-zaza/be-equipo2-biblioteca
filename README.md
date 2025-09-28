@@ -18,5 +18,3 @@ El sistema permitirá administrar pacientes, doctores y sus reservaciones de man
 - **Validación de choques de horarios:** evita que se crucen citas.  
 - **Consulta de citas futuras y pasadas:** mediante endpoints específicos.  
 - **Base de datos en SQLite3:** almacenamiento con relaciones entre pacientes, doctores y reservaciones.  
-
----
