@@ -22,6 +22,7 @@ python app.py
 ```bash
 git clone https://github.com/DOLOR-zaza/be-equipo2-biblioteca.git
 cd Sistema de Reservaciones de Consultorio Médico-api
+```
   
 ## 📊 Diagrama de Clases
 
