@@ -1,11 +1,17 @@
-from .patient import Patient
-from .doctor import Doctor
-from datetime import datetime
+from ..extensions import db
 
-class Appointment:
-    def __init__(self, id: int, patient: Patient, doctor: Doctor, date: datetime, status: str):
-        self.id = id
-        self.patient_id = patient.id   # toma el id del objeto Patient
-        self.doctor_id = doctor.id     # toma el id del objeto Doctor
-        self.date = date
-        self.status = status
+class Appointment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    patient_id = db.Column(db.Integer, nullable=False)
+    doctor_id = db.Column(db.Integer, nullable=False)
+    date = db.Column(db.String(50), nullable=False)
+    reason = db.Column(db.String(200), nullable=True)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "patient_id": self.patient_id,
+            "doctor_id": self.doctor_id,
+            "date": self.date,
+            "reason": self.reason
+        }
