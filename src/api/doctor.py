@@ -1,27 +1,19 @@
-from flask import Blueprint, request, jsonify
-from ..extensions import db
-from ..models.doctor import Doctor
+from flask import Blueprint, jsonify, request
+from src.extensions import db
+from src.models import Doctor
 
-doctor_bp = Blueprint("doctor_bp", __name__)
+bp = Blueprint("doctors", __name__)
 
-@doctor_bp.route("/", methods=["GET"])
+@bp.get("/")
 def list_doctors():
-    """
-    Devuelve todos los doctores registrados en el sistema.
-    """
+    """Devuelve todos los doctores registrados."""
     doctors = Doctor.query.all()
     return jsonify([d.to_dict() for d in doctors])
 
-@doctor_bp.route("/", methods=["POST"])
+@bp.post("/")
 def create_doctor():
-    """
-    Registra un nuevo doctor.
-    """
-    data = request.json
-    new_doctor = Doctor(
-        name=data["name"],
-        specialty=data["specialty"]
-    )
-    db.session.add(new_doctor)
+    data = request.get_json()
+    doctor = Doctor(name=data["name"], specialty=data["specialty"])
+    db.session.add(doctor)
     db.session.commit()
-    return jsonify({"message": "Doctor added successfully"}), 201
+    return jsonify(doctor.to_dict()), 201

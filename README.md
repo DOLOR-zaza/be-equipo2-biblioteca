@@ -12,6 +12,19 @@ Entre sus funcionalidades principales se incluyen:
 - Consulta de citas futuras y pasadas.  
 - Base de datos en SQLite3 para el almacenamiento de información.  
 
+# Consultorio Médico API
+
+API REST en Flask con SQLAlchemy y migraciones, desarrollada bajo el patrón Application Factory.
+
+---
+
+## Instalación
+
+```bash
+git clone https://github.com/DOLOR-zaza/be-equipo2-consultorio
+cd be-equipo2-consultorio
+pip install -r requirements.txt
+
 ---
 
 ## ⚙️ Instalación y Ejecución
