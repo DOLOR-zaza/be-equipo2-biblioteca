@@ -1,10 +1,7 @@
-from flask import Blueprint
-
-# Importamos los blueprints de cada módulo
-from .patient import patient_bp
-from .doctor import doctor_bp
-from .appointment import appointment_bp
-from .auth import auth_bp
+from src.api.appointment import bp as appointment_bp
+from src.api.auth import bp as auth_bp
+from src.api.doctor import bp as doctor_bp
+from src.api.patient import bp as patient_bp
 
 
 def register_blueprints(app):

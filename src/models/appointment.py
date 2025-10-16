@@ -1,17 +1,22 @@
-from ..extensions import db
+from src.extensions import db
 
 class Appointment(db.Model):
+    __tablename__ = "appointments"
+
     id = db.Column(db.Integer, primary_key=True)
-    patient_id = db.Column(db.Integer, nullable=False)
-    doctor_id = db.Column(db.Integer, nullable=False)
+    doctor_id = db.Column(db.Integer, db.ForeignKey("doctors.id"), nullable=False)
+    patient_id = db.Column(db.Integer, db.ForeignKey("patients.id"), nullable=False)
     date = db.Column(db.String(50), nullable=False)
-    reason = db.Column(db.String(200), nullable=True)
+    reason = db.Column(db.String(200))
+
+    doctor = db.relationship("Doctor", backref="appointments")
+    patient = db.relationship("Patient", backref="appointments")
 
     def to_dict(self):
         return {
             "id": self.id,
-            "patient_id": self.patient_id,
-            "doctor_id": self.doctor_id,
+            "doctor": self.doctor.name,
+            "patient": self.patient.name,
             "date": self.date,
-            "reason": self.reason
+            "reason": self.reason,
         }

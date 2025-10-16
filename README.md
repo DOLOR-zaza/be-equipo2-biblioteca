@@ -19,4 +19,17 @@ El sistema permitirá administrar pacientes, doctores y sus reservaciones de man
 - **Consulta de citas futuras y pasadas:** mediante endpoints específicos.  
 - **Base de datos en SQLite3:** almacenamiento con relaciones entre pacientes, doctores y reservaciones.  
 
+# Consultorio Médico API
+
+API REST en Flask con SQLAlchemy y migraciones, desarrollada bajo el patrón Application Factory.
+
+---
+
+## Instalación
+
+```bash
+git clone https://github.com/DOLOR-zaza/be-equipo2-consultorio
+cd be-equipo2-consultorio
+pip install -r requirements.txt
+
 ---
